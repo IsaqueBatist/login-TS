@@ -1,0 +1,7 @@
+.teste{
+  font-weight: ;
+  outline: ;
+  &:focus{
+    outline: none;
+  }
+}
