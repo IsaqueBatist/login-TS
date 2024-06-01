@@ -2,19 +2,17 @@ import React from 'react'
 import { InputContainer, InputText, ErrorText } from './style'
 import { Controller } from 'react-hook-form'
 import { IInput } from './types'
-const Input = ({ control, name, placeholder, errorMessage, ...rest }: IInput) => {
+const Input = ({control, name,  ...rest}: IInput) => {
   return (
     <>
-      <InputContainer>
-
-        <Controller
-          name={name}
-          control={control}
-          rules={{ required: true }}
-          render={({ field: { value, onChange } }) => <InputText value={value} onChange={onChange} placeholder={placeholder}{...rest} />}
-        />
+      <InputContainer >
+      < Controller 
+      control={control}
+      name={name}
+      render={({field: {onChange, onBlur, value, ref}}) =>  <input {...rest} onChange={onChange} onBlur={onBlur} value={value} ref={ref}/>}
+      />
+       
       </InputContainer>
-      {errorMessage ? <ErrorText>{errorMessage}</ErrorText> : null}
     </>
   )
 }

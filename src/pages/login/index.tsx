@@ -3,20 +3,13 @@ import { Input } from "../../components/input/index"
 import Button from "../../components/button"
 import { Container, TittleContainer, Row, FormContainer } from "./style"
 import { useForm } from "react-hook-form"
-import { yupResolver } from '@hookform/resolvers/yup'
-import { IformData } from "./types"
-import * as yup from "yup"
 
-const schema = yup.object({
-  usuario: yup.string().required('Campo Obrigatório'),
-  password: yup.string().min(3, 'No mínimo três caracteres').required('Campo Obrigatório'),
-}).required();
 const LoginPage = () => {
 
-  const { control, handleSubmit, formState: { errors, isValid } } = useForm <IformData>({
-    resolver: yupResolver(schema),
-    mode: 'onChange',
-  })
+  const { control, watch, formState: { errors, isValid } } = useForm()
+
+  const form = watch()
+  console.log(form)
 
   return (
     <Container>
@@ -28,8 +21,8 @@ const LoginPage = () => {
       <Row>
         <FormContainer>
           <form>
-            <Input control={control} name="usuario" placeholder="Usuario" />  
-            <Input control={control} name="senha" placeholder="senha"/>
+            <Input name="email" placeholder="email" control={control} />
+            <Input name="password" placeholder="password" control={control} />
             <Button title="Entrar" />
           </form>
         </FormContainer>
