@@ -1,8 +1,8 @@
 import React from 'react'
-import { InputContainer, InputText, ErrorText } from './style'
+import { InputContainer, ErrorText } from './style'
 import { Controller } from 'react-hook-form'
 import { IInput } from './types'
-const Input = ({control, name,  ...rest}: IInput) => {
+const Input = ({control, name, errorMessage, ...rest}: IInput) => {
   return (
     <>
       <InputContainer >
@@ -11,8 +11,8 @@ const Input = ({control, name,  ...rest}: IInput) => {
       name={name}
       render={({field: {onChange, onBlur, value, ref}}) =>  <input {...rest} onChange={onChange} onBlur={onBlur} value={value} ref={ref}/>}
       />
-       
       </InputContainer>
+      {errorMessage? <ErrorText>{errorMessage}</ErrorText> : null}
     </>
   )
 }

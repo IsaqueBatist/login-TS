@@ -10,21 +10,17 @@ export const InputContainer = styled.div`
 
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-`
-export const InputText = styled.input`
-  background: transparent;
-  width: 100%;
-  border: 0;
-  height: 30px;
-  &:focus{
+  margin-bottom: 10px;
+
+  input{
     outline: none;
     border: none;
+    
   }
 `
 export const ErrorText = styled.p`
   color: #FF0000;
   font-size: 12px;
-  margin: 5px 0;
+  margin: 0;
 
 `
